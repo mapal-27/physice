@@ -1,142 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-body {
-  font-family: Arial;
-  text-align: center;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+            margin: 0;
+            font-family: Arial, sans-serif;
 
-/* Scene */
-.scene {
-  width: 200px;
-  height: 300px;
-  border: 2px solid black;
-  margin: 20px auto;
-  position: relative;
-}
+        }
+        .divclass{
+            display: flex;
+            background-color: aqua;
+            position: sticky;
+            top: 0;
+            align-items: center;
 
-#ball {
-  width: 30px;
-  height: 30px;
-  background: red;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 85px;
-}
+        }
+        .btnclass{
+            height: 20px;  
+            width: 70px;
+            border-radius: 16px;
+            background: none;
+            margin-left: auto ;
 
-/* Bars */
-.bars {
-  width: 200px;
-  margin: auto;
-}
+        }
+        .active{
+            transform: translateX(0%);
 
-.bar {
-  height: 20px;
-  margin: 5px 0;
-  background: lightgray;
-  position: relative;
-}
+        }
+        .sidebar-desing{
+            background-color: aqua;
+            height: 200px;
+            width: 100px;
+    
+            position: fixed;
+            left: 0;
 
-.fill {
-  height: 100%;
-}
+            transform: translateX(-100%);
+            transition: 0.3s;
+        }
+        .linka{
+        text-decoration: none;
+        font-size: 20px;
+        margin: 50px 0;
+        display: block;
+        color: black;
 
-#epFill { background: blue; }
-#ekFill { background: green; }
-#ehFill { background: orange; }
-#totalFill { background: black; }
-</style>
+        }
+        ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+}
+     
+     
+    </style>
+
 </head>
-
 <body>
-
-<h2>Conservation of Energy</h2>
-
-<div class="scene">
-  <div id="ball"></div>
-</div>
-
-<div class="bars">
-  <div>Ep</div>
-  <div class="bar"><div id="epFill" class="fill"></div></div>
-
-  <div>Ek</div>
-  <div class="bar"><div id="ekFill" class="fill"></div></div>
-
-  <div>Eh</div>
-  <div class="bar"><div id="ehFill" class="fill"></div></div>
-
-  <div>Total</div>
-  <div class="bar"><div id="totalFill" class="fill"></div></div>
-</div>
-
-<br>
-
-<button onclick="setSpeed(0.5)">Slow</button>
-<button onclick="setSpeed(1)">Normal</button>
-<button onclick="setSpeed(2)">Fast</button>
-<button onclick="setSpeed(3)">Very Fast</button>
-
-<script>
-let y = 0;
-let speed = 1;
-let velocity = 0;
-let gravity = 0.3;
-
-const ball = document.getElementById("ball");
-
-function setSpeed(s) {
-    speed = s;
-    y = 0;
-    velocity = 0;
-
-}
-
-function updateEnergy() {
-  let maxHeight = 300;
-
-  let Ep = (maxHeight - y) / maxHeight;
-
-  let Ek = Math.abs(velocity) / 8; // make it smaller
-  if (Ek > 1) Ek = 1; // LIMIT it
-
-  let Eh = 1 - (Ep + Ek);
-  if (Eh < 0) Eh = 0;
-
-  // Normalize (keep total = 1 properly)
-  let total = Ep + Ek + Eh;
-  Ep /= total;
-  Ek /= total;
-  Eh /= total;
-
-  document.getElementById("epFill").style.width = Ep * 100 + "%";
-  document.getElementById("ekFill").style.width = Ek * 100 + "%";
-  document.getElementById("ehFill").style.width = Eh * 100 + "%";
-}
-
-animate();
-function animate() {
-  velocity += gravity * speed;
-  y += velocity;
-
-  // bounce
-  if (y > 270) {
-    y = 270;
-    velocity *= -0.7;
-  }
-
-  // move ball
-  ball.style.top = y + "px";
-
-  // update bars
-  updateEnergy();
-
-  requestAnimationFrame(animate);
-}
-</script>
-
-
+    <div class="divclass">
+        <h1>hello word</h1>
+        <img src="" alt="">
+        <button class="btnclass" id="btn"></button>    
+    </div>
+            <div id="sidebar" class="sidebar-desing">
+                <ul>
+                    <li><a href="#"class="linka">home</a></li>
+                    <li><a href="#"class="linka">log in</a></li>
+                    <li><a href="#"class="linka">about us</a></li>
+                </ul>
+            </div>
 </body>
+ <script>                                           /*i dont understand single thing abuts this script*/
+    const btn = document.getElementById("btn");
+    const sidebar = document.getElementById("sidebar");
+    
+    btn.onclick = () => {
+      sidebar.classList.toggle("active");
+    };
+    </script>
 </html>
