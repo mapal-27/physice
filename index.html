@@ -1,85 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            height: 2000px;
-            margin: 0;
-            font-family: Arial, sans-serif;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidebar Practice</title>
 
-        }
-        .divclass{
-            display: flex;
-            background-color: aqua;
-            position: sticky;
-            top: 0;
-            align-items: center;
+<style>
 
-        }
-        .btnclass{
-            height: 20px;  
-            width: 70px;
-            border-radius: 16px;
-            background: none;
-            margin-left: auto ;
-
-        }
-        .active{
-            transform: translateX(0%);
-
-        }
-        .sidebar-desing{
-            background-color: aqua;
-            height: 200px;
-            width: 100px;
-    
-            position: fixed;
-            left: 0;
-
-            transform: translateX(-100%);
-            transition: 0.3s;
-        }
-        .linka{
-        text-decoration: none;
-        font-size: 20px;
-        margin: 50px 0;
-        display: block;
-        color: black;
-
-        }
-        ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 2000px;
 }
-     
-     
-    </style>
 
+/* HEADER */
+.header{
+    display: flex;
+    align-items: center;
+
+    background: aqua;
+    padding: 15px;
+
+}
+
+/* BUTTON */
+.btn{
+    margin-left: auto;
+
+    width: 60px;
+    height: 35px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: white;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 200px;
+    height: 100%;
+
+    background: aqua;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+/* ACTIVE STATE */
+.sidebar.active{
+    transform: translateX(0%);
+}
+
+/* LINKS */
+.sidebar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar a{
+    display: block;
+
+    text-decoration: none;
+    color: black;
+
+    padding: 20px;
+    font-size: 20px;
+
+}
+.navbar{
+    background-color: black;
+    height: 60px;
+
+    align-items: center;
+    display: flex;
+
+    position: sticky;
+    top: 0;
+
+}
+.navbar a{
+    margin: 10px;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+
+</style>
 </head>
+
 <body>
-    <div class="divclass">
-        <h1>hello word</h1>
-        <img src="" alt="">
-        <button class="btnclass" id="btn"></button>    
-    </div>
-            <div id="sidebar" class="sidebar-desing">
-                <ul>
-                    <li><a href="#"class="linka">home</a></li>
-                    <li><a href="#"class="linka">log in</a></li>
-                    <li><a href="#"class="linka">about us</a></li>
-                </ul>
-            </div>
+
+<!-- HEADER -->
+<div class="header">
+
+    <h1>Hello World</h1>
+
+    <button class="btn" id="btn">
+        ☰
+    </button>
+
+ 
+</div>
+
+
+        <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+        </nav>
+
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">About Us</a></li>
+    </ul>
+
+</div>
+
+
+<script>
+
+const btn = document.getElementById("btn");
+const sidebar = document.getElementById("sidebar");
+
+btn.onclick = () => {
+    sidebar.classList.toggle("active");
+};
+
+</script>
+
 </body>
- <script>                                           /*i dont understand single thing abuts this script*/
-    const btn = document.getElementById("btn");
-    const sidebar = document.getElementById("sidebar");
-    
-    btn.onclick = () => {
-      sidebar.classList.toggle("active");
-    };
-    </script>
 </html>
+       
